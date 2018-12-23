@@ -1,29 +1,22 @@
-import {
-    INCREMENTAR,
-    DECREMENTAR,
-    MULTIPLICAR,
-    actions,
-    DIVIDIR,
-    RESET
-} from './contador.actions';
+import * as fromContador from './contador.actions';
 
-export function contadorReducer( state: number = 10, action: actions ) {
+export function contadorReducer( state: number = 10, action: fromContador.actions ) {
 
     switch ( action.type ) {
 
-        case INCREMENTAR:
+        case fromContador.INCREMENTAR:
             return state + 1;
 
-        case DECREMENTAR:
+        case fromContador.DECREMENTAR:
             return state - 1;
 
-        case MULTIPLICAR:
+        case fromContador.MULTIPLICAR:
             return state * action.payload;
 
-        case DIVIDIR:
+        case fromContador.DIVIDIR:
             return state / action.payload;
 
-        case RESET:
+        case fromContador.RESET:
             return 0;
 
         default:
