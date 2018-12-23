@@ -3,7 +3,8 @@ import {
     DECREMENTAR,
     MULTIPLICAR,
     actions,
-    DIVIDIR
+    DIVIDIR,
+    RESET
 } from './contador.actions';
 
 export function contadorReducer( state: number = 10, action: actions ) {
@@ -21,6 +22,9 @@ export function contadorReducer( state: number = 10, action: actions ) {
 
         case DIVIDIR:
             return state / action.payload;
+
+        case RESET:
+            return 0;
 
         default:
             return state;
