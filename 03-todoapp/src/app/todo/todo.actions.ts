@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 
 export const AGREGAR_TODO = '[TODO] Agregar todo';
 export const TOGGLE_TODO = '[TODO] Toggle todo';
+export const EDITAR_TODO = '[TODO] Editar todo';
 
 export class AgregarTodoAction implements Action {
 
@@ -19,5 +20,17 @@ export class ToggleTodoAction implements Action {
 
 }
 
+export class EditarTodoAction implements Action {
+
+    readonly type = EDITAR_TODO;
+
+    constructor(
+        public id: number,
+        public texto: string
+    ) { }
+
+}
+
 export type Acciones = AgregarTodoAction |
-                       ToggleTodoAction;
+                       ToggleTodoAction |
+                       EditarTodoAction;

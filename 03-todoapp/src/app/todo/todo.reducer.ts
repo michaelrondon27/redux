@@ -1,4 +1,7 @@
+// Actions
 import * as fromTodo from './todo.actions';
+
+// Models
 import { Todo } from './model/todo.model';
 
 const todo1 = new Todo('Vencer a Thanos');
@@ -26,6 +29,25 @@ export function todoReducer( state = estaoInicial, action: fromTodo.Acciones): T
                     return {
                         ...todoEdit,
                         completado: !todoEdit.completado
+                    };
+
+                } else {
+
+                    return todoEdit;
+
+                }
+
+            });
+
+        case fromTodo.EDITAR_TODO:
+
+            return state.map( todoEdit => {
+
+                if ( todoEdit.id === action.id ) {
+
+                    return {
+                        ...todoEdit,
+                        texto: action.texto
                     };
 
                 } else {
