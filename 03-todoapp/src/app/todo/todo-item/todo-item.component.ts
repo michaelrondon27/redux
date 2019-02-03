@@ -9,7 +9,11 @@ import { Todo } from '../model/todo.model';
 import { AppState } from '../../app.reducers';
 
 // Actions
-import { ToggleTodoAction, EditarTodoAction } from '../todo.actions';
+import {
+  ToggleTodoAction,
+  EditarTodoAction,
+  BorrarTodoAction
+} from '../todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -71,6 +75,14 @@ export class TodoItemComponent implements OnInit {
     }
 
     const accion = new EditarTodoAction( this.todo.id, this.txtInput.value );
+
+    this.store.dispatch( accion );
+
+  }
+
+  borrarTodo() {
+
+    const accion = new BorrarTodoAction( this.todo.id );
 
     this.store.dispatch( accion );
 

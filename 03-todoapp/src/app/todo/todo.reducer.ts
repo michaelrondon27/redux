@@ -58,6 +58,10 @@ export function todoReducer( state = estaoInicial, action: fromTodo.Acciones): T
 
             });
 
+        case fromTodo.BORRAR_TODO:
+
+            return state.filter( todoEdit => todoEdit.id !== action.id );
+
         default:
             return state;
 
