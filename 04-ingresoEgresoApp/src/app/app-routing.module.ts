@@ -6,6 +6,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
+// Routes
+import { dashboardRoutes } from './dashboard/dashboard.routes';
+
 const routes: Routes = [
     {
         path: 'login',
@@ -17,7 +20,8 @@ const routes: Routes = [
     },
     {
         path: '',
-        component: DashboardComponent
+        component: DashboardComponent,
+        children: dashboardRoutes
     },
     {
         path: '**',
