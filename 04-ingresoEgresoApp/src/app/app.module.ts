@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -30,7 +31,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
