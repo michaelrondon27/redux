@@ -26,4 +26,18 @@ export class AuthService {
 
   }
 
+  login( email: string, password: string ) {
+
+    this.afAuth.auth.signInWithEmailAndPassword( email, password ).then( resp => {
+
+      this.router.navigate(['/']);
+
+    }).catch( error => {
+
+      console.error(error);
+
+    });
+
+  }
+
 }
