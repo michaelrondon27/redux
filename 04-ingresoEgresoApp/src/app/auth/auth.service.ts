@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 import * as firebase from 'firebase';
+import { map } from 'rxjs/operators';
 
 import Swal from 'sweetalert2';
 
@@ -67,6 +68,22 @@ export class AuthService {
     this.router.navigate(['/login']);
 
     this.afAuth.auth.signOut();
+
+  }
+
+  isAuth() {
+
+    return this.afAuth.authState.pipe(
+      map( fbUser => {
+
+        if ( fbUser == null ) {
+          this.router.navigate(['/login']);
+        }
+
+        return fbUser != null;
+
+      })
+    );
 
   }
 
