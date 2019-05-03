@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
+import Swal from 'sweetalert2';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +22,11 @@ export class AuthService {
 
     }).catch( error => {
 
-      console.error(error);
+      Swal.fire({
+        title: 'Error en el login',
+        text: error.message,
+        type: 'error'
+      });
 
     });
 
@@ -34,7 +40,11 @@ export class AuthService {
 
     }).catch( error => {
 
-      console.error(error);
+      Swal.fire({
+        title: 'Error en el login',
+        text: error.message,
+        type: 'error'
+      });
 
     });
 
