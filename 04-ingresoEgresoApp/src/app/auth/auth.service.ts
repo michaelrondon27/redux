@@ -32,7 +32,15 @@ export class AuthService {
 
     this.afAuth.authState.subscribe( (fbUser: firebase.User) => {
 
-      console.log(fbUser);
+      if ( fbUser ) {
+
+        this.afDB.doc(`${ fbUser.uid }/usuario`).valueChanges().subscribe( usuarioObj => {
+
+          console.log(usuarioObj);
+
+        });
+
+      }
 
     });
 
