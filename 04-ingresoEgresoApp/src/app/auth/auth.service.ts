@@ -23,6 +23,8 @@ import { Subscription } from 'rxjs';
 })
 export class AuthService {
 
+  private usuario: User;
+
   private userSubscription: Subscription = new Subscription();
 
   constructor(
@@ -42,11 +44,13 @@ export class AuthService {
 
           const newUser = new User( usuarioObj );
           this.store.dispatch( new SetUserAction( newUser ) );
+          this.usuario = newUser;
 
         });
 
       } else {
 
+        this.usuario = null;
         this.userSubscription.unsubscribe();
 
       }
@@ -131,6 +135,10 @@ export class AuthService {
       })
     );
 
+  }
+
+  getUsuario() {
+    return { ...this.usuario };
   }
 
 }

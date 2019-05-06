@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IngresoEgreso } from './ingreso-egreso.model';
+import { IngresoEgresoService } from './ingreso-egreso.service';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ingreso-egreso',
@@ -13,7 +16,9 @@ export class IngresoEgresoComponent implements OnInit {
 
   tipo = 'ingreso';
 
-  constructor() { }
+  constructor(
+    public ingresoEgresoService: IngresoEgresoService
+  ) { }
 
   ngOnInit() {
 
@@ -28,7 +33,17 @@ export class IngresoEgresoComponent implements OnInit {
 
     const ingresoEgreso = new IngresoEgreso({ ...this.forma.value, tipo: this.tipo });
 
-    console.log(ingresoEgreso);
+    this.ingresoEgresoService.crearIngresoEgreso( ingresoEgreso ).then( () => {
+
+      Swal.fire({
+        title: 'Creado',
+        text: ingresoEgreso.descripcion,
+        type: 'success'
+      });
+
+      this.forma.reset({ monto: 0 });
+
+    })
 
   }
 
