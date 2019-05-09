@@ -15,6 +15,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+// Graficas
+import { ChartsModule } from 'ng2-charts';
+
 // Enviroments
 import { environment } from 'src/environments/environment';
 
@@ -50,6 +53,7 @@ import { OrdenIngresoEgresoPipe } from './ingreso-egreso/orden-ingreso-egreso.pi
     AngularFirestoreModule,
     AppRoutingModule,
     BrowserModule,
+    ChartsModule,
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot( appReducers ),
