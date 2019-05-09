@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { IngresoEgresoService } from 'src/app/ingreso-egreso/ingreso-egreso.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,7 +19,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   constructor(
     public authService: AuthService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    public ingresoEgresoService: IngresoEgresoService
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   logout() {
 
     this.authService.logout();
+
+    this.ingresoEgresoService.cancelarSubscriptions();
 
   }
 
