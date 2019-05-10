@@ -15,6 +15,10 @@ const routes: Routes = [
         component: RegisterComponent
     },
     {
+        path: '',
+        loadChildren: './ingreso-egreso/ingreso-egreso.module#IngresoEgresoModule'
+    },
+    {
         path: '**',
         redirectTo: ''
     }
