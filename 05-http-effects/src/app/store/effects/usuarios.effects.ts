@@ -21,7 +21,7 @@ export class UsuariosEffects {
 
             return this.usuariosService.getUsers()
                     .pipe(
-                        map( users => new usuariosActions.CargarUsuariosSuccess( users) ),
+                        map( users => new usuariosActions.CargarUsuariosSuccess( users ) ),
                         catchError( error => of(new usuariosActions.CargarUsuariosFail( error )) )
                     );
 
