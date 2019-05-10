@@ -14,14 +14,6 @@ const routes: Routes = [
         path: 'register',
         component: RegisterComponent
     },
-    // {
-    //     path: '',
-    //     component: DashboardComponent,
-    //     children: dashboardRoutes,
-    //     canActivate: [
-    //         AuthGuardService
-    //     ]
-    // },
     {
         path: '**',
         redirectTo: ''

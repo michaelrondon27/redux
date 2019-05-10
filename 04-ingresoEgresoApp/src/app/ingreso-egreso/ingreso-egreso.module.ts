@@ -14,20 +14,22 @@ import { OrdenIngresoEgresoPipe } from './orden-ingreso-egreso.pipe';
 
 // Modulos Personalizados
 import { SharedModule } from '../shared/shared.module';
+import { DashboardRountingModule } from '../dashboard/dashboard-rounting.module';
 
 @NgModule({
   declarations: [
-    ChartsModule,
     DashboardComponent,
     DetalleComponent,
     EstadisticaComponent,
     IngresoEgresoComponent,
     OrdenIngresoEgresoPipe,
-    ReactiveFormsModule,
-    SharedModule
   ],
   imports: [
-    CommonModule
+    ChartsModule,
+    CommonModule,
+    DashboardRountingModule,
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class IngresoEgresoModule { }
