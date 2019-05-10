@@ -13,9 +13,11 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { AppRoutingModule } from './app-routing.module';
 
 // NGRX
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducers } from './store/app.reducer';
+import { effectsArr } from './store/effects/index';
 
 // Environment
 import { environment } from 'src/environments/environment';
@@ -27,6 +29,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    EffectsModule.forRoot( effectsArr ),
     HttpClientModule,
     SharedModule,
     StoreModule.forRoot( appReducers ),
