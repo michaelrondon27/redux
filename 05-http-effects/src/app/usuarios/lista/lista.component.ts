@@ -12,6 +12,10 @@ import * as usuariosActions from '../../store/actions';
 })
 export class ListaComponent implements OnInit {
 
+  error: any;
+
+  loading: boolean;
+
   usuarios: Usuario[] = [];
 
   constructor(
@@ -19,6 +23,16 @@ export class ListaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.store.select('usuarios').subscribe( usuarios => {
+
+      this.error = usuarios.error;
+
+      this.loading = usuarios.loading;
+
+      this.usuarios = usuarios.users;
+
+    });
 
     this.store.dispatch( new usuariosActions.CargarUsuarios() );
 
