@@ -5,6 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
+// Guards
+import { AuthGuardService } from './auth/auth-guard.service';
+
 const routes: Routes = [
     {
         path: 'login',
@@ -16,7 +19,10 @@ const routes: Routes = [
     },
     {
         path: '',
-        loadChildren: './ingreso-egreso/ingreso-egreso.module#IngresoEgresoModule'
+        loadChildren: './ingreso-egreso/ingreso-egreso.module#IngresoEgresoModule',
+        canLoad: [
+            AuthGuardService
+        ]
     },
     {
         path: '**',
