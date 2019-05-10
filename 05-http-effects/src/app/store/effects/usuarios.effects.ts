@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, catchError } from 'rxjs/operators';
 import { UsuarioService } from '../../services/usuario.service';
+import { of } from 'rxjs';
 
 import * as usuariosActions from '../actions';
 
@@ -14,10 +15,17 @@ export class UsuariosEffects {
     ) {}
 
     @Effect()
-    cargarUsuarios$ = this.actions$.pipe(ofType( usuariosActions.CARGAR_USUARIOS ), switchMap( () => {
+    cargarUsuarios$ = this.actions$.pipe(
+        ofType(usuariosActions.CARGAR_USUARIOS ),
+        switchMap( () => {
 
-        return this.usuariosService.getUsers().pipe(map( users => new usuariosActions.CargarUsuariosSuccess( users) ));
+            return this.usuariosService.getUsers()
+                    .pipe(
+                        map( users => new usuariosActions.CargarUsuariosSuccess( users) ),
+                        catchError( error => of(new usuariosActions.CargarUsuariosFail( error )) )
+                    );
 
-    }));
+        })
+    );
 
 }
